@@ -16,3 +16,5 @@ async def on_ready():
 async def on_message(message):
 	if (message.content.startswith('!')):
 		await client.send_message(message.channel, 'Succes')
+
+client.run('MzUzNjE3MTc2NzkzNzEwNjEy.DIyULg.7J9_CWDYHr2PGeFJWmnPhRLV8BU')
