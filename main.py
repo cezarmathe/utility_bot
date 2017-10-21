@@ -6,9 +6,11 @@ import re
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import constants as constants
+import database
 
 
 client = discord.Client()	
+polls = PollDatabase() 
 
 @client.event
 async def on_ready():
@@ -21,6 +23,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	if (message.content.startswith('!'):
+		await cliend.send_message(message.channel, polls.value(constants.START, constants.INDEX))
 
 		
 

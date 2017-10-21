@@ -2,7 +2,7 @@
 
 #	--	Constants	
 
-START = 4
+START = 3
 
 
 #	--	Poll Constants
