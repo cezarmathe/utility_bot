@@ -14,7 +14,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	if (message.content.startswith('!')):
+	if (message.content.startswith('pls valoare')):
 		await client.send_message(message.channel, 'Succes')
 
 client.run('MzUzNjE3MTc2NzkzNzEwNjEy.DIyULg.7J9_CWDYHr2PGeFJWmnPhRLV8BU')
+
+
+
+# https://discordapp.com/oauth2/authorize?client_id=353617176793710612&scope=bot&permissions=0x00000008
