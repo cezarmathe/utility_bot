@@ -5,7 +5,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-client = discord.Client()
+client = discord.Client()	
 
 @client.event
 async def on_ready():

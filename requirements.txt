@@ -1,0 +1,6 @@
+discord.py==0.0.2
+aiohttp
+websockets
+chardet
+gspread
+oauth2client
