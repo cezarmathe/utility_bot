@@ -3,6 +3,7 @@ import asyncio
 import re
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import constants.py as constants
 
 
 client = discord.Client()	
@@ -18,7 +19,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	if (message.content.startswith('pls valoare')):
-		await client.send_message(message.channel, 'Succes')
+		await client.send_message(message.channel, str(constants.INDEX))
 
 client.run('MzUzNjE3MTc2NzkzNzEwNjEy.DIyULg.7J9_CWDYHr2PGeFJWmnPhRLV8BU')
 
