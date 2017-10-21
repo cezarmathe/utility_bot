@@ -3,7 +3,7 @@ import asyncio
 import re
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import constants.py as constants
+import constants as constants
 
 
 client = discord.Client()	
