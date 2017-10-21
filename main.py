@@ -1,3 +1,5 @@
+
+
 import discord
 import asyncio
 import re
@@ -18,8 +20,15 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	if (message.content.startswith('pls valoare')):
-		await client.send_message(message.channel, str(constants.POLL_INDEX))
+	if (message.content.startswith('!'):
+
+		
+
+
+
+
+
+
 
 client.run('MzUzNjE3MTc2NzkzNzEwNjEy.DIyULg.7J9_CWDYHr2PGeFJWmnPhRLV8BU')
 
