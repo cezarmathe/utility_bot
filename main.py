@@ -2,28 +2,45 @@
 
 import discord
 import asyncio
-import re
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import constants as constants
-import database
+import variables as variables
+import database as database
+import handlers as handlers
+import objects as obj
 
 
-client = discord.Client()	
-polls = PollDatabase() 
+POLLS = database.PollDatabase() 
+MEMES = database.MemeDatabase()
 
-@client.event
+@obj.client.event
 async def on_ready():
     print('Logged in as:')
-    print(client.user.name)
-    print(client.user.id)
+    print(obj.client.user.name)
+    print(obj.client.user.id)
     print('-------------')
     print('')
+    await obj.client.change_presence(game=discord.Game(name='Valoare mare'))
 
-@client.event
+@obj.client.event
 async def on_message(message):
-	if (message.content.startswith('!'):
-		await cliend.send_message(message.channel, polls.value(constants.START, constants.INDEX))
+	chanel = handlers.Channel(message.channel)
+
+	if (message.content.startswith(constants.PREFIX)):
+		 # handled = await handlers.message_handler(message)
+		 # if (handled):
+		 # 	return
+		 # else:
+		 # 	await obj.client.send_message(message.channel, 'There was an error handling your message.')
+		 x = handlers.Message(message, chanel.get_channel())
+		 y = handlers.Sender(chanel.get_channel(), 'test message ' + x.args_text)
+		 z = handlers.Embedder(chanel.get_channel(), 'Title', 'Description', 0xffffff)
+		 await z.send()
+		 await y.send()
+		 return
+
+		 	
 
 		
 
@@ -33,7 +50,7 @@ async def on_message(message):
 
 
 
-client.run('MzUzNjE3MTc2NzkzNzEwNjEy.DIyULg.7J9_CWDYHr2PGeFJWmnPhRLV8BU')
+obj.client.run('MzUzNjE3MTc2NzkzNzEwNjEy.DIyULg.7J9_CWDYHr2PGeFJWmnPhRLV8BU')
 
 
 

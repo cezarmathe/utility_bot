@@ -5,28 +5,33 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 class GSpread():
-	scope = ['https://spreadsheets.google.com/feeds']
-	creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
-	gclient = gspread.authorize(creds)
-	def __init__():
-		return
+	def __init__(self):
+		self.scope = ['https://spreadsheets.google.com/feeds']
+		self.creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', self.scope)
+		self.gclient = gspread.authorize(self.creds)
+		self.database = self.gclient.open('discord_database')
+		return 
 
 class PollDatabase():
-	poll = GSpread()
-	polls = poll.gclient.open("discord_database").sheet3
-	memes = gclient.open("discord_database").sheet2
-	def __init__():
+	def __init__(self):
+		self.poll = GSpread()
+		self.polls = self.poll.database.worksheet('Polls')
 		return
-	def value(x, y):
-		return polls.cell(x, y).value
+	def value(self, x, y):
+		return self.polls.cell(x,y).value
+	def update(self, x, y, value):
+		self.polls.update_cell(x, y, value)
+		
 
 class MemeDatabase():
-	meme = GSpread()
-	polls = meme.gclient.open("discord_database").sheet3
-	memes = gclient.open("discord_database").sheet2
-	def __init__():
+	def __init__(self):
+		self.meme = GSpread()
+		self.memes = self.meme.database.worksheet('Memes')
 		return
-	def value(x, y):
-		return memes.cell(x, y).value
+	def value(self, x, y):
+		return self.memes.cell(x,y).value
+	def update(self, x, y, value):
+		self.memes.update_cell(x, y, value)
 
 
+# https://github.com/burnash/gspread
