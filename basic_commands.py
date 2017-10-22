@@ -30,4 +30,7 @@ async def errors(data_holder : classes.CommandDataHolder):
 
 
 async def say(data_holder : classes.CommandDataHolder):
+	text = data_holder.args_text.upper()
+	sender = classes.Sender(data_holder.channel, text)
+	await sender.send()
 	return
