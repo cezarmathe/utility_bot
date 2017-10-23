@@ -12,9 +12,6 @@ import objects as obj
 import classes as classes
 
 
-POLLS = database.PollDatabase() 
-MEMES = database.MemeDatabase()
-
 
 @obj.client.event
 async def on_ready():
@@ -33,7 +30,13 @@ async def on_message(message):
 		 checked = await checker.check()
 		 if (checked):
 		 	return
-		 # custom_checker = CustomChecker()
+		 custom_checker = handlers.CustomChecker(msj)
+		 checked = await custom_checker.check()
+		 if (checked):
+		 	await custom_checker.do(checked)
+		 	return
+		 uk = classes.Sender(message.channel, 'Unknown command')
+		 await uk.send()
 		 return
 
 		 	

@@ -34,4 +34,15 @@ class MemeDatabase():
 		self.memes.update_cell(x, y, value)
 
 
+class CommandDatabase():
+	def __init__(self):
+		self.command = GSpread()
+		self.commands = self.command.database.sheet1
+		return
+	def value(self, x, y):
+		return self.commands.cell(x,y).value
+	def update(self, x, y, value):
+		self.commands.update_cell(x, y, value)
+
+
 # https://github.com/burnash/gspread

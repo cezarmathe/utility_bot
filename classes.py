@@ -2,14 +2,21 @@
 import discord
 import utilities as utils
 import objects as obj
+import database as database
+
+
+POLLS = database.PollDatabase() 
+MEMES = database.MemeDatabase()
+COMMANDS = database.CommandDatabase()
 
 class CommandDataHolder():
 	# Holds data for commands
-	def __init__(self, name, args_array, args_text, channel):
+	def __init__(self, name, args_array, args_text, channel, author):
 		self.name = name
 		self.args_array = args_array
 		self.args_text = args_text
 		self.channel = channel
+		self.author = author
 		return
 
 class Embedder():
@@ -35,6 +42,7 @@ class Sender():
 		try:
 			await obj.client.send_message(self.channel, self.content)
 		except Exception as e:
+			# raise e
 			errhandler = ErrorHandler(self.channel, False, '0x01')
 			await errhandler.handle()
 
